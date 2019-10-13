@@ -5,6 +5,7 @@ CMakeFiles/vuchain.dir/HASH/HASH.cpp.o: ../HASH/HASH.cpp
 CMakeFiles/vuchain.dir/HASH/HASH.cpp.o: ../HASH/HASH.h
 
 CMakeFiles/vuchain.dir/main.cpp.o: .././HASH/HASH.h
+CMakeFiles/vuchain.dir/main.cpp.o: ../block.h
 CMakeFiles/vuchain.dir/main.cpp.o: ../main.cpp
 CMakeFiles/vuchain.dir/main.cpp.o: ../main.h
 CMakeFiles/vuchain.dir/main.cpp.o: ../transaction.h

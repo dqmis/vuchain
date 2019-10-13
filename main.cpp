@@ -2,24 +2,32 @@
 #include "user.h"
 #include "transaction.h"
 #include "transaction_list.h"
+#include "block.h"
 
 int main() {
-    User user1("dominykas", 100);
-    User user2("ne dominykas", 12);
-    User user3("opa dominykas", 39);
-    Transaction t1(&user2, &user1, user1.get_balance());
-    Transaction t2(&user1, &user3, 15);
-    TransactionList w1;
-    w1.add_transaction(t1);
+    User u2("shrek", 69);
+    User u1("satoshi", 10);
+    Transaction t(&u1, &u2, 55);
+    TransactionList tl;
+    tl.add_transaction(t);
 
-    std::cout << user1.get_name() << " " << user1.get_pkey() << " " << user1.get_balance() << std::endl;
-    std::cout << user2.get_name() << " " << user2.get_pkey() << " " << user2.get_balance() << std::endl;
-    std::cout << t1.get_hash() << " " << t1.get_tvalue() << std::endl;
-    std::cout << w1.get_mhash() << " " << w1.get_award() << std::endl;
-    w1.add_transaction(t2);
-    std::cout << w1.get_mhash() << " " << w1.get_award() << std::endl;
+    Block gen_block("09168ee94ed042cb6bdc3111290f57aed4d032dafef648eba250ac3af8dad98d42c6ab2e40fd7f2d68c5e0737521ca9f9728a2f259b7ff1464617244f1d57f3", &tl);
+    gen_block.mine();
+    tl.clear();
 
-    std::cout << user1.get_name() << " " << user1.get_pkey() << " " << user1.get_balance() << std::endl;
-    std::cout << user2.get_name() << " " << user2.get_pkey() << " " << user2.get_balance() << std::endl;
+    std::cout << u1.get_name() << " " << u1.get_balance() << std::endl;
+    std::cout << u2.get_name() << " " << u2.get_balance() << std::endl;
+
+    Transaction t1(&u1, &u2, 10);
+    tl.add_transaction(t1);
+
+    Block block1(gen_block.get_hash(), &tl);
+    block1.mine();
+
+    std::cout << u1.get_name() << " " << u1.get_balance() << std::endl;
+    std::cout << u2.get_name() << " " << u2.get_balance() << std::endl;
+
+    std::cout << gen_block.get_hash() << std::endl;
+    std::cout << block1.get_hash() << std::endl;add
     return 0;
 }

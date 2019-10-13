@@ -17,16 +17,20 @@ public:
     void add_transaction(Transaction & t) {
         if (t.valid()) {
             tlist.push_back(t);
-            award += t.get_tvalue() * 0.01;
             mhash = vu::hash(mhash + t.get_hash());
         }
     }
     std::string get_mhash() { return mhash; }
     float get_award() { return award; }
     void appproved() {
-        for(Transaction & t: tlist)
-            t.approved();
+        for(Transaction & t: tlist) {
+            if (t.valid()) {
+                t.approved();
+                award += t.get_tvalue() * 0.01;
+            }
+        }
     }
+    void clear() { tlist.clear(); }
 };
 
 #endif //VUCHAIN_TRANSACTION_LIST_H

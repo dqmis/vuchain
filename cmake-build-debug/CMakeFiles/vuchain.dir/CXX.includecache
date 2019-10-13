@@ -28,6 +28,12 @@ functional
 sstream
 -
 
+/Users/dqmis/Documents/University/vuchain/block.h
+main.h
+/Users/dqmis/Documents/University/vuchain/main.h
+transaction_list.h
+/Users/dqmis/Documents/University/vuchain/transaction_list.h
+
 /Users/dqmis/Documents/University/vuchain/main.cpp
 iostream
 -
@@ -37,6 +43,8 @@ transaction.h
 /Users/dqmis/Documents/University/vuchain/transaction.h
 transaction_list.h
 /Users/dqmis/Documents/University/vuchain/transaction_list.h
+block.h
+/Users/dqmis/Documents/University/vuchain/block.h
 
 /Users/dqmis/Documents/University/vuchain/main.h
 string

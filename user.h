@@ -25,7 +25,7 @@ public:
     std::string get_name() { return name; }
     std::string get_pkey() { return pkey; }
     float get_balance() { return balance; }
-    void pay(float am) { balance -= am; std::cout << balance << std::endl; }
+    void pay(float am) { balance -= am; }
     void receive(float am) { balance += am; }
 };
 

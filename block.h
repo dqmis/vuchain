@@ -16,6 +16,7 @@ private:
     int nonce = 0;
     int timestamp;
     TransactionList *tl;
+    //float difficulty;
 public:
     Block(std::string prev_hash_, TransactionList *tl_) {
         timestamp = std::time(0);
@@ -28,9 +29,10 @@ public:
                 std::to_string(nonce) +
                 thash +
                 prev_hash
-                ) > prev_hash) {
+                ) >= prev_hash) {
             nonce ++;
-        } hash = vu::hash(std::to_string(nonce) + thash + prev_hash);
+        }
+        hash = vu::hash(std::to_string(nonce) + thash + prev_hash);
         tl->appproved();
     }
     std::string get_hash() { return hash; }

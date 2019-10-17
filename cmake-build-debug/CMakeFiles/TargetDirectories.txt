@@ -1,3 +1,0 @@
-/Users/dqmis/Documents/University/vuchain/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/dqmis/Documents/University/vuchain/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/dqmis/Documents/University/vuchain/cmake-build-debug/CMakeFiles/vuchain.dir

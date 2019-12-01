@@ -7,6 +7,7 @@
 
 #include "main.h"
 #include "transaction.h"
+#include "./HASH/sha256.h"
 
 class TransactionList {
 private:
@@ -16,7 +17,7 @@ private:
 public:
     void add_transaction(Transaction & t) {
         tlist.push_back(t);
-        mhash = vu::hash(mhash + t.get_hash());
+        mhash = sha256(mhash + t.get_hash());
         award += t.get_tvalue() * 0.01;
     }
     std::string get_mhash() { return mhash; }

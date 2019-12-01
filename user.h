@@ -6,6 +6,7 @@
 #define VUCHAIN_USER_H
 
 #include "main.h"
+#include "./HASH/sha256.h"
 
 class User {
 private:
@@ -20,7 +21,7 @@ public:
 
         name = name_;
         balance = balance_;
-        pkey = vu::hash(name + std::to_string(std::time(0)) + std::to_string(generator()));
+        pkey = sha256(name + std::to_string(std::time(0)) + std::to_string(generator()));
     }
     std::string get_name() { return name; }
     std::string get_pkey() { return pkey; }
@@ -28,6 +29,5 @@ public:
     void pay(float am) { balance -= am; }
     void receive(float am) { balance += am; }
 };
-
 
 #endif //VUCHAIN_USER_H

@@ -7,11 +7,13 @@
 
 #include "main.h"
 #include "user.h"
+#include "./HASH/sha256.h"
 
 class Transaction {
 private:
     std::string rhash;
     std::string shash;
+    std::string hash;
     float tvalue;
     User *ru;
     User *su;
@@ -23,8 +25,10 @@ public:
         rhash = ru->get_pkey();
         shash = su->get_pkey();
         tvalue = tvalue_;
+        hash = sha256(rhash + shash + std::to_string(tvalue));
     }
-    std::string get_hash() { return vu::hash(rhash + shash + std::to_string(tvalue)); }
+    std::string get_hash() { return sha256(rhash + shash + std::to_string(tvalue)); }
+    std::string get_gen_hash() { return hash; }
     float get_tvalue() { return tvalue; }
     bool valid() { return su->get_balance() >= tvalue; };
     void approved() {
@@ -34,7 +38,9 @@ public:
             status = 1;
         }
     }
+    bool is_approved() {
+        return  status == 1;
+    }
 };
-
 
 #endif //VUCHAIN_TRANSACTION_H

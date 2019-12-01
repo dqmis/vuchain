@@ -6,8 +6,9 @@
 #define VUCHAIN_MAIN_H
 
 #include <string>
-#include "./HASH/HASH.h"
 #include <random>
 #include <vector>
+#include <random>
+#include <iostream>
 
 #endif //VUCHAIN_MAIN_H

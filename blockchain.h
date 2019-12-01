@@ -24,14 +24,14 @@ public:
             index = rand() % pool.size();
             Transaction t = pool[index];
             if ((t.valid() && t.get_hash() == t.get_gen_hash())) {
-                t_list.add_transaction(t);
+                t_list.add_transaction(t.get_hash());
                 transaction_indexes.push_back(index);
                 reward += t.get_tvalue() * reward_range;
             }
         }
+        t_list.create_merkle();
     }
-    void push_index(int i) { transaction_indexes.push_back(i); }
-    void add_transaction(Transaction t) { t_list.add_transaction(t); }
+
     float get_reward() { return reward; }
     TransactionList get_transaction_list() { return t_list; }
     std::vector<int> get_indexes() { return transaction_indexes; }
